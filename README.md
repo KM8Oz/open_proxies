@@ -23,7 +23,7 @@
 <!-- Status -->
 
 <!-- <h4 align="center"> 
-	🚧  TinkoffPay 🚀 Under construction...  🚧
+	🚧  open proxies 🚀 Under developement...  🚧
 </h4> 
 
 <hr> -->
