@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  publish-tauri:
+  publish-package:
     strategy:
       fail-fast: false
       matrix:
@@ -18,9 +18,8 @@ jobs:
     - name: build release
       uses: actions-rs/cargo@v1
       with:
-        use-cross: true
         command: build
-        args: --release --all-features
+        args: --release
     - uses: actions/checkout@v3
     - uses: manoadamro/rust-release@v1
       with:
