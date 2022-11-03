@@ -1,0 +1,30 @@
+name: "publish"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - name: install Rust stable
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - name: build release
+      uses: actions-rs/cargo@v1
+      with:
+        use-cross: true
+        command: build
+        args: --release --all-features
+    - name: upload releases
+    - uses: actions/checkout@v3
+    - uses: manoadamro/rust-release@v1
+      with:
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.repository }}
+        token: ${{ secrets.TOKEN }}

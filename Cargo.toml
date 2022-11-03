@@ -2,7 +2,13 @@
 name = "open_proxies"
 version = "0.1.0"
 edition = "2021"
-
+homepage = "https://km8oz.github.io/open_proxies"
+license = "Apache-2.0"
+repository = "https://github.com/KM8Oz/open_proxies.git"
+license-file = "LICENCE.md"
+keywords = ["proxy", "validator", "open", "checker", "free_proxies"]
+description = "Simple and fast proxy checker that include protocol validation"
+readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies.tokio]

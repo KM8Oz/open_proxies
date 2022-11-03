@@ -10,6 +10,7 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead, Read, Write};
 use std::path::Path;
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
 use tokio::net::TcpStream;
 use tokio::task::JoinHandle;
@@ -564,6 +565,48 @@ pub async fn concurrent_threads(
         })
         .await;
 }
+pub async fn check_proxies(
+    threads: Option<usize>,
+    proxies: Vec<Proxy>,
+    timeout: u64,
+    retrys: usize,
+) -> Option<Vec<Proxy>> {
+    let max_threads = match std::thread::available_parallelism() {
+        Ok(s) => s.get(),
+        Err(_) => 5,
+    };
+    let thread_number = match threads {
+        Some(m) => {
+            if m > max_threads {
+                max_threads
+            } else {
+                m
+            }
+        }
+        None => max_threads,
+    };
+    let data = Arc::new(Mutex::new(vec![]));
+    let _ = stream::iter(proxies)
+        .for_each_concurrent(thread_number, |mut proxie| {
+            let mut result = data.lock().unwrap();
+            async move {
+                let is_valid = compute_proxy(proxie.clone(), timeout, retrys).await;
+                if is_valid.0 {
+                    proxie.proto = is_valid.1;
+                    println!("{:?} {}", proxie.clone(), "✅");
+                    let res = proxie.clone();
+                    result.push(res);
+                } else {
+                    println!("{:?} {}", proxie.clone(), "❌");
+                }
+            }
+        })
+        .await;
+    match data.clone().lock() {
+        Ok(m) => Some(m.clone()),
+        Err(_) => None,
+    }
+}
 
 #[tokio::test]
 async fn test_check_port() {
@@ -571,6 +614,10 @@ async fn test_check_port() {
     let proxies = readfile("./socks5.txt".into(), ).await;
     if proxies.is_some() {
         println!("🔥 start computing! 🔥");
+        for proxie in proxies.unwrap() {
+            let resy = compute_proxy(proxie.clone(), 1, 2).await;
+            println!("{:?}", resy);
+        }
     }
-    // concurrent_threads(Some(10), proxies.unwrap(), 1, 2).await
+    
 }
