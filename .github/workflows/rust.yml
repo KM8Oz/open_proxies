@@ -87,10 +87,6 @@ jobs:
         with:
           name: open_proxies-osx
           path: target/x86_64-apple-darwin/release/open_proxies
-      - uses: actions/upload-artifact@v2
-        with:
-          name: open_proxies-osx
-          path: open_proxies-osx
 
   build-windows:
     env:
