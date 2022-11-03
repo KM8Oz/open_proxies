@@ -19,12 +19,7 @@ jobs:
       with:
         command: build
         args: --release
-    - uses: manoadamro/rust-release@v1
-      with:
-        owner: ${{ github.repository_owner }}
-        repo: ${{ github.repository }}
-        token: ${{ secrets.TOKEN }}
     - uses: actions/upload-artifact@v3 
       with:
-        name: open_proxies
-        path: ${{ github.workspace }}/target/release/*
+        name: open_proxies__VERSION__
+        path: ${{ github.workspace }}/target/release/open_proxies*
