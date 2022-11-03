@@ -1,6 +1,6 @@
 
 
-<h1 id="top" align="center">open_proxies</h1>
+<h1 id="top" align="center">Open Proxies</h1>
 <p id="top" color="#343434" align="center">⭐️ <font color="#F7C815">Leave me a start please</font> ⭐️</p>
 <p id="top" align="center">
 <font color="#F7C815">it will motivate me to continue maintaining and adding futures</font></p>
