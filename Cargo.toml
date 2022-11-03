@@ -9,7 +9,6 @@ license-file = "LICENCE.md"
 keywords = ["proxy", "validator", "open", "checker", "free_proxies"]
 description = "Simple and fast proxy checker that include protocol validation"
 readme = "README.md"
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies.tokio]
 version = "1.0.3"
