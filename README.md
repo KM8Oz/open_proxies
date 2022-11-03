@@ -63,7 +63,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 # install using cargo:
 $ cargo install open_proxies
 # install manualy:
-$ curl 
+$ curl https://github.com/KM8Oz/open_proxies/archive/refs/tags/[binary]
 ```
 
 ## ✅ lib_Usage ##
