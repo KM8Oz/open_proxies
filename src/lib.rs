@@ -465,7 +465,8 @@ where
 }
 pub async fn readfile(path: String) -> Option<Vec<Proxy>> {
     let pth = Path::new(&path);
-    if !pth.is_file() {
+    if !pth.is_file() { // for somehownot working proporly
+    println!("file \"{:?}\" doesn't exist!", pth.to_str().unwrap());
         return None;
     }
     if let Ok(lines) = read_lines(pth) {

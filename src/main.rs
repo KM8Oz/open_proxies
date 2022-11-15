@@ -59,6 +59,7 @@ fn cli() -> Command {
             .value_parser(clap::value_parser!(u64).range(1..4))
             .required(false),
         ])
+        .group(ArgGroup::new("options").multiple(true))
         .group(ArgGroup::new("usage").multiple(true))
         .next_help_heading("USAGE")
         .args([

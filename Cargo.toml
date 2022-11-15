@@ -1,6 +1,6 @@
 [package]
 name = "open_proxies"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 homepage = "https://km8oz.github.io/open_proxies"
 license = "Apache-2.0"
