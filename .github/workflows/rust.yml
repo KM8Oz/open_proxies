@@ -60,6 +60,8 @@ jobs:
       - name: Strip symbols from binary
         run: |
           strip -s ${{ matrix.path }} || arm-linux-gnueabihf-strip -s ${{ matrix.path }} || aarch64-linux-gnu-strip -s ${{ matrix.path }}
+      - name: list files in target
+        run: ls target/${{ matrix.target }}
       - uses: actions/upload-artifact@v3
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
@@ -86,8 +88,6 @@ jobs:
       - name: Strip symbols from binary
         run: |
           strip -u -r target/x86_64-apple-darwin/release/open_proxies
-      - name: list targets in matrix run
-        run: ls target
       - uses: actions/upload-artifact@v3
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
