@@ -11,8 +11,8 @@
 
   <img alt="Repository size" href="https://crates.io/crates/tinkoffpay" src="https://img.shields.io/github/repo-size/KM8Oz/open_proxies?color=56BEB8">
 
-  <img alt="License" href="https://crates.io/crates/tinkoffpay" src="https://img.shields.io/github/license/KM8Oz/open_proxies?color=56BEB8">
-  <img alt="Crates.io" href="https://crates.io/crates/tinkoffpay" src="https://img.shields.io/crates/v/tinkoffpay?color=56BEB8&label=tinkoffpay">
+  <img alt="License" href="https://crates.io/crates/open_proxies" src="https://img.shields.io/github/license/KM8Oz/open_proxies?color=56BEB8">
+  <img alt="Crates.io" href="https://crates.io/crates/open_proxies" src="https://img.shields.io/crates/v/open_proxies?color=56BEB8&label=open_proxies">
   <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/KM8Oz/open_proxies?color=56BEB8" /> -->
 
   <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/KM8Oz/open_proxies?color=56BEB8" /> -->
