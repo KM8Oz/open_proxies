@@ -61,10 +61,8 @@ jobs:
         run: |
           strip -s ${{ matrix.path }} || arm-linux-gnueabihf-strip -s ${{ matrix.path }} || aarch64-linux-gnu-strip -s ${{ matrix.path }}
       - name: list files in target
-        run: ls ${{ matrix.path }}
-      - uses: actions/upload-artifact@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: ls target/${{ matrix.target }}/release
+      - uses: actions/upload-artifact@v1
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.path }}
@@ -88,9 +86,7 @@ jobs:
       - name: Strip symbols from binary
         run: |
           strip -u -r target/x86_64-apple-darwin/release/open_proxies
-      - uses: actions/upload-artifact@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - uses: actions/upload-artifact@v1
         with:
           name: open_proxies-osx
           path: target/x86_64-apple-darwin/release/open_proxies
@@ -125,9 +121,7 @@ jobs:
           use-cross: true
           command: build
           args: --release --target=${{ matrix.target }}
-      - uses: actions/upload-artifact@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - uses: actions/upload-artifact@v1
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.path }}
