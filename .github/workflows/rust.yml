@@ -60,6 +60,8 @@ jobs:
         run: |
           strip -s ${{ matrix.path }} || arm-linux-gnueabihf-strip -s ${{ matrix.path }} || aarch64-linux-gnu-strip -s ${{ matrix.path }}
       - uses: actions/upload-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.path }}
@@ -84,6 +86,8 @@ jobs:
         run: |
           strip -u -r target/x86_64-apple-darwin/release/open_proxies
       - uses: actions/upload-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           name: open_proxies-osx
           path: target/x86_64-apple-darwin/release/open_proxies
@@ -119,6 +123,8 @@ jobs:
           command: build
           args: --release --target=${{ matrix.target }}
       - uses: actions/upload-artifact@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.path }}
