@@ -39,6 +39,8 @@ jobs:
             pkg_config_path: /usr/lib/x86_64-linux-gnu/pkgconfig
     steps:
       - uses: actions/checkout@v1
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Install System Dependencies
         run: |
           env
@@ -68,9 +70,10 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.TOKEN }}
-          tag: ${{ github.ref }}
-          name: ${{ github.ref }}
+          tag: ${{ env.RELEASE_VERSION }}
+          name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
       # - name: Upload Release Asset
@@ -90,6 +93,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -111,9 +116,10 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.TOKEN }}
-          tag: ${{ github.ref }}
-          name: ${{ github.ref }}
+          tag: ${{ env.RELEASE_VERSION }}
+          name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
       # - name: Create Release
@@ -157,6 +163,8 @@ jobs:
             path: target\i686-pc-windows-msvc\release\open_proxies.exe
     steps:
       - uses: actions/checkout@v1
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -175,9 +183,10 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.TOKEN }}
-          tag: ${{ github.ref }}
-          name: ${{ github.ref }}
+          tag: ${{ env.RELEASE_VERSION }}
+          name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
       # - name: Create Release
