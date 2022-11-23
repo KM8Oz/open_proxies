@@ -73,6 +73,7 @@ jobs:
           tag: ${{ env.RELEASE_VERSION }}
           name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          prerelease: true
           updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
@@ -119,6 +120,7 @@ jobs:
           tag: ${{ env.RELEASE_VERSION }}
           name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          prerelease: true
           updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
@@ -186,6 +188,7 @@ jobs:
           tag: ${{ env.RELEASE_VERSION }}
           name: ${{ env.RELEASE_VERSION }}
           allowUpdates: true
+          prerelease: true
           updateOnlyUnreleased: true
           artifacts: ${{ matrix.target }}.zip
           artifactContentType: application/zip
