@@ -111,7 +111,7 @@ jobs:
           strip -u -r target/x86_64-apple-darwin/release/open_proxies
       - name: Zip binary
         run: |
-          zip ${{ matrix.target }}.zip ${{ matrix.path }}
+          zip x86_64-apple-darwin.zip target/x86_64-apple-darwin/release/open_proxies
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1
