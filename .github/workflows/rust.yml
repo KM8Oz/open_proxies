@@ -122,7 +122,7 @@ jobs:
           allowUpdates: true
           prerelease: true
           updateOnlyUnreleased: true
-          artifacts: ${{ matrix.target }}.zip
+          artifacts: x86_64-apple-darwin.zip
           artifactContentType: application/zip
       # - name: Create Release
       #   id: create_release
